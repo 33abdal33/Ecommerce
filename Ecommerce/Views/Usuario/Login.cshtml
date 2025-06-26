@@ -1,0 +1,99 @@
+﻿﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda</title>
+    <link rel="stylesheet" href="~/css/login.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+    <body>
+      <header class="header">
+          <nav class="nav">
+
+            <a href="#" class="nav_logo">SmartBuy</a>
+            <ul class="nav_items">
+                <li class="nav_item">
+                    <a asp-controller="principal" asp-action="index" href="#" class="nav_link">Home</a>
+                    <a href="#" class="nav_link">Product</a>
+                    <a href="#" class="nav_link">Services</a>
+                    <a href="#" class="nav_link">Contact</a>
+                </li>
+            </ul>
+            <button class="button" id="form-open">Login</button>
+          </nav>
+        
+      </header>
+
+      <!--Home-->
+      <section class="home">
+          <div class="form_container">
+              <i class="uil uil-times form_close"></i>
+              <!--Login From-->
+              <div class="form login_form">
+                <form class="form-signin" asp-controller="Usuario" asp-action="ValidarUsuario" id='valForm' method="post">
+                      <h2>Login</h2>
+                      <div class="input_box">
+                        <input type="text" @* asp-for="UsuNombre" *@ id="username" placeholder="Ingresa tu usuario" required />
+                        <i class="uil uil-user user"></i>
+                      </div>
+                    <div class="input_box">
+                        <input type="password" @* asp-for="UsuClave *@" id="password" placeholder="Ingresa tu contraseña" required/>
+                        <i class="uil uil-lock password"></i>
+                        <i class="uil uil-eye-slash pw_hide"></i>
+                    </div>
+                    <div class="option_field">
+                        <span class="checkbox">
+                            <input type="checkbox" id="check" />
+                            <label for="check">Recordarmelo</label>
+                        </span>
+                        <a href="#" class="forgot_pw">Forgot password?</a>
+                    </div>
+
+                    <button class="button" type="submit">  Login Now</button>
+
+                    <div class="login_signup">No tienes una cuenta? <a href="#" id="signup">Signup</a></div>
+                  </form>
+              </div>
+              <!--Signup Form-->
+            <div class="form signup_form">
+                <form asp-controller="Usuario" asp-action="FormularioUsuario">
+                    <h2>Signup</h2>
+
+                    <div class="input_box">
+                        <input type="email" @* asp-for="UsuCorreo" *@ placeholder="Ingresa tu email" required />
+                        <i class="uil uil-envelope-alt email"></i>
+                    </div>
+                    <div class="input_box">
+                        <input type="text" @* asp-for="UsuNombre" *@ id="username" placeholder="Ingresa tu usuario" required />
+                        <i class="uil uil-user user"></i>
+                    </div>
+                    <div class="input_box">
+                        <input type="password" @* asp-for="UsuClave" *@ placeholder="Crea tu contraseña" required />
+                        <i class="uil uil-lock password"></i>
+                        <i class="uil uil-eye-slash pw_hide"></i>
+                    </div>
+                    <div class="input_box">
+                        <input type="password" placeholder="Confirmar su contraseña" required />
+                        <i class="uil uil-lock password"></i>
+                        <i class="uil uil-eye-slash pw_hide"></i>
+                    </div>
+
+
+                    <button class="button">Registrarse ahora</button>
+
+                    <div class="login_signup">Ya tienes una cuenta? <a href="#" id="login">Login</a></div>
+                </form>
+            </div>
+          </div>
+      </section>
+      <script src="~/js/Usuario.js"></script>
+    </body>
+</html>
