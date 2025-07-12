@@ -1,0 +1,200 @@
+﻿@model IEnumerable<Ecommerce.Models.Producto>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="~/css/StylePrincipal.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/EstiloHomeProducto.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bxl-shopify'></i>
+                <div class="logo_name">SmartBuy</div>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li>
+            <li>
+                <a asp-controller="Producto" asp-action="Crear">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Add Products</span>
+                </a>
+                <span class="tooltip">Add Products</span>
+            </li>
+            <li>
+
+                <a asp-controller="Usuario" asp-action="usuarios">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">User</span>
+                </a>
+                <span class="tooltip">User</span>
+
+
+            </li>
+
+            <li>
+                <a asp-controller="principal" asp-action="ListarProductos">
+                    <i class='bx bx-chat'></i>
+                    <span class="links_name">FILTRAR PRODUCTOS</span>
+                </a>
+                <span class="tooltip">FILTRAR PRODUCTOS</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Analytics</span>
+                </a>
+                <span class="tooltip">Analytics</span>
+            </li>
+            <li>
+                <a asp-controller="TemporalVenta" asp-action="VerCarrito">
+                    <i class='bx bx-cart-alt'></i>
+                    <span class="links_name">Cart</span>
+                </a>
+                <span class="tooltip">Dasboard</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dasboard</span>
+                </a>
+                <span class="tooltip">Dasboard</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Setting</span>
+                </a>
+                <span class="tooltip">Setting</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="~/css/user.png" alt="" />
+                    <div class="name_job">
+                        <div class="name">Abdal L.</div>
+                        <div class="job">Usuario</div>
+                    </div>
+                </div>
+                <a asp-controller="Usuario" asp-action="CerrarSesion">
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="home_content">
+        <div class="text">Smart Buy</div>
+        <section class="home">
+            @* <div class="container-items">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <figure>
+                            <img src=""
+                                 alt="producto" />
+                        </figure>
+                        <div class="info-product">
+
+                            <h2> @item.Nombre </h2>
+                            <p class="price">$@item.Precio</p>
+                            <div>
+                                <a asp-action="Comprar" asp-route-id="" class="info-product">
+                                    <button>Añadir al carrito</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div> *@
+        </section>
+    </div>
+    <script src="~/js/menu.js"></script>
+
+</body>
+
+
+</html>
+
+
+<header>
+
+    <h1>SmarthBuy</h1>
+    <a asp-controller="Usuario" asp-action="CerrarSesion">Cerrar Sesion</a>
+    <a asp-controller="Producto" asp-action="Crear">Nuevo Producto</a>
+    <a asp-controller="TemporalVenta" asp-action="VerCarrito">Ver carrito </a>
+    <div class="container-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+        </svg>
+
+        <div class="count-products">
+            <span id="contador-productos">0</span>
+        </div>
+        <div class="container-cart-products
+            hidden-cart">
+            <div class="cart-product">
+                <div class="info-cart-product">
+                    <span class="cantidad-producto-carrito">1</span>
+                    <p class="titulo-producto-carrito">AirPods</p>
+                    <span class="precio-producto-carrito">$80</span>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+
+            </div>
+            <div class="cart-total">
+                <h3>Total:</h3>
+                <span class="total-pagar">$5000</span>
+            </div>
+        </div>
+    </div>
+
+</header>
+<section class="home">
+    <div class="container-items">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <figure>
+                    <img src=""
+                         alt="producto" />
+                </figure>
+                <div class="info-product">
+
+                    <h2> @item.Nombre </h2>
+                    <p class="price">$@item.Precio</p>
+                    <div>
+                        <a asp-action="Comprar" asp-route-id="" class="info-product">
+                            <button>Añadir al carrito</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</section>
+<script src="~/js/home.js"></script>
